@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.softwares.swamisamarth.datasync.view_models.MainViewModel" />
+    </data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.softwares.swamisamarth.datasync.ui.MainActivity">
+
+    <EditText
+        android:id="@+id/first_name_tv"
+        android:layout_width="match_parent"
+        android:text="@={viewmodel.myContact.firstName}"
+        android:layout_height="48dp" />
+
+
+    <EditText
+        android:id="@+id/last_name_tv"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:text="@={viewmodel.myContact.lastName}"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/contact_name_tv"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:maxLength="10"
+        android:text="@={viewmodel.myContact.contactNo}"
+        android:layout_height="48dp" />
+    
+    <Button
+        android:id="@+id/send_btn"
+        android:text="send"
+        android:layout_marginTop="10dp"
+        android:onClick="@{() -> viewmodel.sendData()}"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <ListView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:adapter="@{viewmodel.myContactsAdapter}"></ListView>
+
+</LinearLayout>
+</layout>
