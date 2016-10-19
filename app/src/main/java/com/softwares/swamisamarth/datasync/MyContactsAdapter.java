@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.raizlabs.android.dbflow.list.FlowQueryList;
 import com.softwares.swamisamarth.datasync.models.MyContact;
+
+import java.util.List;
 
 /**
  * Created by Narendra on 10/16/2016.
@@ -16,7 +19,7 @@ import com.softwares.swamisamarth.datasync.models.MyContact;
 
 public class MyContactsAdapter extends BaseAdapter {
 
-    private FlowQueryList<MyContact> myContacts;
+    private List<MyContact> myContacts;
     private LayoutInflater inflater;
     private Context context;
 
@@ -25,7 +28,7 @@ public class MyContactsAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(context);
     }
 
-    public MyContactsAdapter(FlowQueryList<MyContact> myContacts, Context context) {
+    public MyContactsAdapter(List<MyContact> myContacts, Context context) {
         this(context);
         this.myContacts = myContacts;
 

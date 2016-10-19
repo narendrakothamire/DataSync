@@ -20,9 +20,15 @@ public class MainViewModel extends BaseViewModel {
 
     private MyContact myContact = new MyContact();
     private MyContactsAdapter myContactsAdapter;
+    private FlowQueryList<MyContact> list;
 
     public MainViewModel(MyContactsAdapter myContactsAdapter) {
         this.myContactsAdapter = myContactsAdapter;
+        list = SQLite.select()
+                .from(MyContact.class)
+                .flowQueryList();
+        myContactsAdapter.setMyContacts(list);
+
     }
 
     public MyContactsAdapter getMyContactsAdapter() {
@@ -32,12 +38,7 @@ public class MainViewModel extends BaseViewModel {
     private Transaction.Success success = new Transaction.Success() {
         @Override
         public void onSuccess(Transaction transaction) {
-
-            FlowQueryList<MyContact> list = SQLite.select()
-                    .from(MyContact.class)
-            .flowQueryList();
-
-            myContactsAdapter.setMyContacts(list);
+            list.refresh();
             myContactsAdapter.notifyDataSetChanged();
         }
     };

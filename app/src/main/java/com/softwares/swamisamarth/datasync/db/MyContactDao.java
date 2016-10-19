@@ -32,6 +32,7 @@ public class MyContactDao {
             @Override
             public void execute(DatabaseWrapper databaseWrapper) {
                 myContact.insert(databaseWrapper);
+
             }
         }).success(success)
                 .error(error)
